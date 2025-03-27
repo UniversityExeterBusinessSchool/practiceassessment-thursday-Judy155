@@ -1,10 +1,10 @@
 #######################################################################################################################################################
 # 
-# Name:
-# SID:
-# Exam Date:
-# Module:
-# Github link for this assignment:  
+# Name:Chenyang Xu
+# SID:740099095
+# Exam Date:27/3/2025
+# Module:BEMM458 Programming for Business Analytics
+# Github link for this assignment:  https://github.com/UniversityExeterBusinessSchool/practiceassessment-thursday-Judy155
 #
 # ######################################################################################################################################################
 # Instruction 1. Read the questions and instructions carefully and complete scripts.
@@ -17,7 +17,7 @@
 
 # Instruction 4. Ensure you provide comments for the code and the output to show contextual understanding.
 
-# Instruction 5. Upon completing this test, commit to Git, copy and paste your code into the word file and upload the saved file to ELE.
+# Instruction 5. Upon completing this test, commit to Git, copy and paste your codctory overalle into the word file and upload the saved file to ELE.
 #                There is a leeway on when you need to upload to ELE, however, you must commit to Git at 
 #                the end of your session.
 
@@ -27,7 +27,6 @@
 # You are given a dictionary called key_comments. Your allocated keys are the first and last digit of your SID.
 # Find the start and end position of each of the items in the sentence using the find command.
 # Create and populate a list called my_list with a tuple of (start location, end location) for each value in comments 
- 
 
 customer_feedback = """Your recent order experience has been satisfactory overall. While there were some minor issues,
 we appreciate the effort made to resolve them promptly."
@@ -50,7 +49,22 @@ key_comments = {
 # Write your search code here and provide comments. 
 
 # Initialize an empty list to store (start, end) positions
-my_list = []
+
+my_list = [] 
+
+allocated_keys = [7,5] #the first and last digit of my SID
+
+for key in allocated_keys: #Use the for loop to get the start and end positions of the values corresponding to key: 7,5
+    comment = key_comments[key]
+    start_pos = customer_feedback.find(comment)
+    
+    if start_pos != -1: #Conditional statement
+        end_pos = start_pos + len(comment)
+        my_list.append((start_pos, end_pos))#add 
+
+print("mylist:",my_list)
+#output mylist: [(129, 136), (99, 109)]
+
 
 ##########################################################################################################################################################
 
@@ -59,18 +73,40 @@ my_list = []
 # Operating Profit Margin, Revenue per Customer, Customer Churn Rate, and Average Order Value. Use Python functions 
 # that will take the values and return the metric needed. Use the first two and last two digits of your ID number as the input values.
 
+
 # Insert first two digits of ID number here:
+id_start2 = 74
 # Insert last two digits of ID number here:
+id_last2 = 95
 
 # Write your code for Operating Profit Margin
+def operating_profit_margin(revenue, operating_profit):
+    return (operating_profit / revenue) * 100
 
 # Write your code for Revenue per Customer
+def revenue_per_customer(total_revenue, total_customers):
+    return total_revenue / total_customers
 
 # Write your code for Customer Churn Rate
+def customer_churn_rate(lost_customers, total_customers):
+    return (lost_customers / total_customers) * 100
 
 # Write your code for Average Order Value
+def average_order_value(total_revenue, total_orders):
+    return total_revenue / total_orders
 
 # Call your designed functions here
+
+print("operating_profit_margin:",operating_profit_margin(74,95))
+#output operating_profit_margin: 128.3783783783784
+print("revenue_per_customer:",revenue_per_customer(74,95))
+#output revenue_per_customer: 0.7789473684210526
+print("customer_churn_rate:",customer_churn_rate(74,95))
+#output customer_churn_rate: 77.89473684210526
+print("average_order_value:",average_order_value(74,95))
+#output average_order_value: 0.7789473684210526
+
+
 
 ##########################################################################################################################################################
 
@@ -79,6 +115,8 @@ my_list = []
 # Develop a linear regression model and determine:
 # 1. The price at which the store can maximize revenue
 # 2. The demand when the price is set at £52
+
+
 
 """
 Price (£)    Demand (Units)
@@ -97,6 +135,22 @@ Price (£)    Demand (Units)
 """
 
 # Write your code here
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Data for linear regression
+prices = np.array([20, 25, 30, 35,40, 45, 50,55,60,65,70]).reshape(-1, 1) 
+demand = np.array([300, 280, 260, 240,210, 190, 160,140,120,100,85])
+
+# Create and train model
+model = LinearRegression()
+model.fit(prices, demand)#practice model
+
+# Predict demand at price 52
+predicted_demand = model.predict(np.array([[52]]))
+print(f"Predicted demand at price £52: {predicted_demand[0]}")
+#output Predicted demand at price £52: 158.17272727272726
+
 
 ##########################################################################################################################################################
 
@@ -106,17 +160,20 @@ import random
 import matplotlib.pyplot as plt
 
 # Generate 100 random numbers between 1 and student id number
-max-value = integer(input("Enter your Student ID: "))
-random_numbers = [random.randint(1, max_value) for i in range(0,100)]
+max_value = int(input("Enter your Student ID: "))
+random_numbers = [random.randint(1, max_value) for i in range(100)]
+    #random_numbers = [random.randint(1, max_value) for i in range(0,100)]
 
 # Plotting the numbers in a line chart
-plt.plot(random_numbers, marker='O', markercolor='green', markeredgcolor='red', linestyle='--', lable='Random Numbers', color='blue');
-plt.title(Line Chart of 100 Random Numbers)
-plt.xlabel="Index"
-plt.ylabel="Random Number"
-plt.legend('---')
+
+plt.plot(random_numbers, marker='o', markerfacecolor='green', mec ='red', linestyle='--', label='Random Numbers', color='blue');
+#plt.plot(random_numbers, marker='O', markercolor='green', markeredgcolor='red', linestyle='--', lable='Random Numbers', color='blue');
+
+plt.title("Line Chart of 100 Random Numbers")#should have "" in parentheses
+
+plt.xlabel=("Index") #add bracketing
+plt.ylabel=("Random Number") #add bracketing
+#plt.legend('---')
+plt.legend()
 plt.grid(True)
 plt.show()
-
-
-
