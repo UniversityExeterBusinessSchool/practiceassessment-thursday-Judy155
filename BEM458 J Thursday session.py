@@ -177,3 +177,4 @@ plt.ylabel=("Random Number") #add bracketing
 plt.legend()
 plt.grid(True)
 plt.show()
+plt.savefig("plot.pdf")
