@@ -161,6 +161,7 @@ import matplotlib.pyplot as plt
 
 # Generate 100 random numbers between 1 and student id number
 max_value = int(input("Enter your Student ID: "))
+#output Enter your Student ID: 74
 random_numbers = [random.randint(1, max_value) for i in range(100)]
     #random_numbers = [random.randint(1, max_value) for i in range(0,100)]
 
